@@ -25,14 +25,14 @@
 
         <div>
             <x-input-label for="bio" :value="__('Bio')" />
-            <x-text-input id="bio" name="bio" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
-            <x-input-error class="mt-2" :messages="$errors->get('name')" />
+            <x-text-input id="bio" name="bio" type="text" class="mt-1 block w-full" :value="old('bio', $user->bio)" required autofocus autocomplete="bio" />
+            <x-input-error class="mt-2" :messages="$errors->get('bio')" />
         </div>
 
         <div id="imageDisplay" style="margin-top: 20px;">
             <x-input-label for="avatar" :value="__('Avatar')" />
             <!-- Đảm bảo ảnh được bo tròn và giảm kích thước -->
-            <img id="imagePreview" src="https://media.baoquangninh.vn/upload/image/202308/medium/2119436_c1117c51e220a02827abf34f4e8a55af.jpg" alt="Image Preview" class="rounded-full w-32 h-32 object-cover mx-auto" style="display: block;">
+            <img id="imagePreview" src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="Image Preview" class="rounded-full w-32 h-32 object-cover mx-auto" style="display: block;">
             <input type="file" id="imageInput" name="image" accept="image/*" class="block w-full text-sm text-gray-700 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
         </div>
 
