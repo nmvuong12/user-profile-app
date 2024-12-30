@@ -39,7 +39,7 @@ class ProfileController extends Controller
         $user->avatar = $request->image;
         if ($request->image != 'null') {
             // Xóa ảnh cũ nếu có
-            if ($user->avatar) {
+            if ($request->user()->avatar) {
                 Storage::delete($user->avatar);
             }
 
@@ -48,12 +48,12 @@ class ProfileController extends Controller
             $user->avatar = $path;
         }
 
-        $user->save();
-        $allData = $request->all();
-        return dd($allData); // Để debug và xem toàn bộ dữ liệu
+        $request->user()->save();
+        // $allData = $request->all();
+        // return dd($allData); // Để debug và xem toàn bộ dữ liệu
 
         // return 'okkk';
-        // return redirect()->route('profile.edit')->with('success', 'Profile updated successfully!');
+        return redirect()->route('profile.edit')->with('success', 'Profile updated successfully!');
     }
 
 
